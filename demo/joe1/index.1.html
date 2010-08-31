@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>SoundManager 2: Joe's Playground</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="../index.css" media="screen" />
+<!-- soundManager.useFlashBlock: related CSS -->
+<link rel="stylesheet" type="text/css" href="../flashblock/flashblock.css" />
+<link rel="stylesheet" type="text/css" href="styles.css" />
+<script type="text/javascript" src="../../script/soundmanager2.js"></script>
+<script type="text/javascript">
+	soundManager.flashVersion = 9;
+	soundManager.useHighPerformance = true;
+	soundManager.useFastPolling = true;
+	soundManager.useFlashBlock = true;
+	soundManager.url = '../../swf/'; // path to SoundManager2 SWF files (note trailing slash)
+	soundManager.debugMode = true;
+	soundManager.consoleOnly = false;
+	soundManager.onready(function(oStatus) {
+	});
+	
+</script>
+</head>
+<body>
+ <div id="sm2-container">
+   <!-- flash is appended here -->
+ </div>
+<h2 id="looping-conventional">Demo Joe (cloned 4c)</h2>
+<button onclick="javascript:j1();">Go Go Go</button>
+<button onclick="soundManager.stop('hhCymbal')">make it stop!</button>
+<script type="text/javascript">
+function j1() {
+	var s = soundManager.createSound({
+	  id:'hhCymbal',
+	  url:'../mpc/audio/AMB_HHOP.mp3'
+	});
+
+	s.play({
+	  onfinish: function() {
+	    this.play();
+	    // or, soundManager.play('hhCymbal');
+	  }
+	});	
+}	
+</script>
+</body>
+</html>
