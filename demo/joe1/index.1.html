@@ -16,6 +16,7 @@
 	soundManager.useFlashBlock = true;
 	soundManager.url = '../../swf/'; // path to SoundManager2 SWF files (note trailing slash)
 	soundManager.debugMode = true;
+	soundManager.debugFlash = true;
 	soundManager.consoleOnly = false;
 	soundManager.onready(function(oStatus) {
 	});
@@ -33,7 +34,7 @@
 function j1() {
 	var s = soundManager.createSound({
 	  id:'hhCymbal',
-	  url:'../mpc/audio/AMB_HHOP.mp3'
+	  url:'audio/003_1.mp3'
 	});
 
 	s.play({
