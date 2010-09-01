@@ -1,0 +1,135 @@
+---
+soundManager.waitForWindowLoad
+  might want to set to true if baking the audio urls into the page
+  for the loopoff table
+
+---
+window.soundManager
+  is what a soundManager is associated with...
+  i think that implied one SoundManager instance for the entire loopoff table
+
+---
+(position will wrap around to 0, setPosition() will break out of loop when >0)
+  what does this mean?  (for the .loops property)
+
+---
+multiShot:true
+multiShotEvents:true
+  I think this multiShotEvents will need to be set to true
+
+---
+type:'audio/mp3' instead of null if the filename does not contain an extension
+
+---
+this.wmode = null;
+  mode to render the flash movie in - null, transparent, opaque (last two allow layering of HTML on top)
+  specialWmodeCase ...what is this, how does this work
+
+
+---
+didFlashBlock: should be false (the default) for now, its just another layer of complexity...
+
+---
+How is the .sandbox used?
+
+---
+(function(){
+   var a = '#sm2-usehtml5audio=', l = _wl, b = null;
+   if (l.indexOf(a) !== -1) {
+     b = (l.substr(l.indexOf(a)+a.length) === '1');
+     if (typeof console !== 'undefined' && typeof console.log !== 'undefined') {
+       console.log((b?'Enabling ':'Disabling ')+'useHTML5Audio via URL parameter');
+     }
+     _s.useHTML5Audio = b;
+   }
+ }());
+  What a cool way to leverage variables in the parent scope and execute some code immediately!
+  Note, the sub-localization of the vars from the parent, i.e. "l = _wl"...smart
+
+
+---
+return (_needsFlash?(_didInit && !_disabled):(_s.useHTML5Audio && _s.hasHTML5));
+  Thats nifty, "_needsFlash" is a var, "?" invoked tertiary op
+
+
+---
+document[smID]
+  interesting...yields the embed object within this snippet
+	<div id="sm2-container" class="sm2_debug flash_debug high_performance movieContainer swf_unblocked">
+	   <!-- flash is appended here -->
+	 <embed width="100%" height="100%" name="sm2movie" id="sm2movie" src="../../swf/soundmanager2_flash9_debug.swf" quality="high" allowscriptaccess="always" bgcolor="#ffffff" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" allowfullscreen="true" flashvars="debug=1"></div>
+	
+	
+---
+this.o = null;
+  what is this...the sound object?
+
+---
+_idCheck set at one point by getSoundByID
+
+---
+soundManager.getSoundByID is an alias to a hash of sounds encapsulated by soundManager
+
+---
+make()
+  internal function within .createSound to instantiate a SMSound object and add it to the .sounds hash (via sounds["sound_id"])
+
+---
+_setup_html5
+  instantiates an Audio obj
+
+---
+if (oMethod && oMethod instanceof Function) {
+ 
+} else {
+  throw _str('needFunction');
+}
+  good input validation technique
+
+---
+createVideo
+  why? what?
+
+---
+if (!_t.isHTML5) {
+
+} else {
+  
+}  
+  I like this indentation style as opposed to having else on next line
+
+
+---
+playState
+  what do the numbers mean?
+
+---
+item.method.apply(item.scope,[item.position]);
+  fancy, how does it work?
+
+
+---
+What's the difference between === and ==
+duder seems to use === much more often
+
+---
+Do the ints in readyState jive exactly with the HTML5 spec or does it have different meaning?
+
+---
+_createMovie = function(smID, smURL) {
+  where the javascript creates the embed object and injects into DOM
+  Line 1152 method start
+  Line 1229 creates movieHTML <object id=
+  Line 1231 actual creation of embed obj
+
+---
+_waitForEI
+  wait for external input
+---
+o = flash embed obj
+oMC = Media Container (i think)
+_a = Audio instance
+
+
+--------------------------------------------- .as file notes
+writeDebug

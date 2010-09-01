@@ -19,6 +19,29 @@
 	soundManager.debugFlash = true;
 	soundManager.consoleOnly = false;
 	soundManager.onready(function(oStatus) {
+		// play one 
+		soundManager.createSound({
+		  id:'j1',
+		  url:'audio/003_1.mp3',
+		  loops: 2
+		});
+
+		soundManager.createSound({
+		  id:'j2_1',
+		  url:'audio/003_1.mp3',
+		  loops: 2
+		});
+		soundManager.createSound({
+		  id:'j2_2',
+		  url:'audio/003_2.mp3',
+		  loops: 2
+		});
+		soundManager.createSound({
+		  id:'j2_3',
+		  url:'audio/003_3.mp3',
+		  loops: 2
+		});
+		
 	});
 	
 </script>
@@ -27,23 +50,32 @@
  <div id="sm2-container">
    <!-- flash is appended here -->
  </div>
-<h2 id="looping-conventional">Demo Joe (cloned 4c)</h2>
-<button onclick="javascript:j1();">Go Go Go</button>
-<button onclick="soundManager.stop('hhCymbal')">make it stop!</button>
-<script type="text/javascript">
-function j1() {
-	var s = soundManager.createSound({
-	  id:'hhCymbal',
-	  url:'audio/003_1.mp3'
-	});
 
-	s.play({
-	  onfinish: function() {
-	    this.play();
-	    // or, soundManager.play('hhCymbal');
-	  }
-	});	
-}	
+<h2>Demo Joe (j1)</h2>
+<button onclick="soundManager.play('j1');">Go Go Go</button>
+<button onclick="soundManager.stop('j1')">make it stop!</button>
+
+<h2>Demo Joe (j2) Play 3 at once 2 iterations</h2>
+<button onclick="load_j2();">Load</button>
+<button onclick="play_j2();">Go Go Go</button>
+<button onclick="stop_j2();">make it stop!</button>
+<script type="text/javascript">
+  function load_j2() {
+	  soundManager.load('j2_1');
+	  soundManager.load('j2_2');
+	  soundManager.load('j2_3');
+  }
+  function play_j2() {
+	  soundManager.play('j2_1');
+	  soundManager.play('j2_2');
+	  soundManager.play('j2_3');
+  }
+  function stop_j2() {
+	  soundManager.stop('j2_1');
+	  soundManager.stop('j2_2');
+	  soundManager.stop('j2_3');	
+  }
+	
 </script>
 </body>
 </html>
